@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agent & System Automation Experts</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --secondary: #8b5cf6;
+            --dark: #1e1b4b;
+            --light: #f8fafc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: rgba(30, 27, 75, 0.95) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            padding: 5px 0;
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-link {
+            color: #fff !important;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--primary) !important;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background: var(--primary);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after {
+            width: 80%;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--dark) 0%, #312e81 100%);
+            color: white;
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:rgba(99,102,241,0.1);stop-opacity:1" /><stop offset="100%" style="stop-color:rgba(139,92,246,0.1);stop-opacity:1" /></linearGradient></defs><circle cx="200" cy="100" r="150" fill="url(%23grad)"/><circle cx="900" cy="400" r="200" fill="url(%23grad)"/><circle cx="1100" cy="150" r="100" fill="url(%23grad)"/></svg>');
+            opacity: 0.3;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-20px) scale(1.05); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            animation: slideInDown 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            animation: slideInUp 1s ease;
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(99, 102, 241, 0.6);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background: var(--light);
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            height: 100%;
+            border: 1px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.2);
+            border-color: var(--primary);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            transform: rotateY(360deg);
+        }
+
+        /* Banner Section */
+        .banner {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.9), rgba(139, 92, 246, 0.9)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400"><rect fill="%231e1b4b" width="1200" height="400"/><circle cx="100" cy="100" r="80" fill="rgba(99,102,241,0.3)"/><circle cx="1000" cy="300" r="120" fill="rgba(139,92,246,0.3)"/></svg>');
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .banner::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            to { left: 100%; }
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            padding: 20px;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            background: var(--light);
+            transform: translateX(10px);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        /* Contact Form */
+        .contact {
+            padding: 80px 0;
+            background: var(--light);
+        }
+
+        .form-control {
+            border-radius: 10px;
+            padding: 15px;
+            border: 2px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 0.2rem rgba(99, 102, 241, 0.15);
+        }
+
+        /* Chatbot */
+        .chatbot-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.5);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            border: none;
+        }
+
+        .chatbot-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(99, 102, 241, 0.7);
+        }
+
+        .chatbot-window {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 350px;
+            height: 500px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            display: none;
+            flex-direction: column;
+            z-index: 1000;
+            overflow: hidden;
+        }
+
+        .chatbot-window.active {
+            display: flex;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .chatbot-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chatbot-body {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background: #f8fafc;
+        }
+
+        .chatbot-message {
+            margin-bottom: 15px;
+            display: flex;
+        }
+
+        .chatbot-message.bot {
+            justify-content: flex-start;
+        }
+
+        .chatbot-message.user {
+            justify-content: flex-end;
+        }
+
+        .message-bubble {
+            max-width: 70%;
+            padding: 12px 18px;
+            border-radius: 18px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .message-bubble.bot {
+            background: white;
+            color: #333;
+            border-bottom-left-radius: 4px;
+        }
+
+        .message-bubble.user {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+
+        .chatbot-input {
+            display: flex;
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .chatbot-input input {
+            flex: 1;
+            border: 1px solid #e2e8f0;
+            border-radius: 25px;
+            padding: 10px 20px;
+            margin-right: 10px;
+        }
+
+        .chatbot-input button {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            color: white;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        /* Scroll to top */
+        .scroll-top {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--dark);
+            color: white;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .scroll-top.active {
+            display: flex;
+        }
+
+        .scroll-top:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .project-filters {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .filter-btn {
+            padding: 10px 30px;
+            border: 2px solid var(--primary);
+            background: white;
+            color: var(--primary);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-bottom: 30px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
+        }
+
+        .project-image {
+            position: relative;
+            overflow: hidden;
+            height: 250px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+
+        .project-image img, .project-image video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s ease;
+        }
+
+        .project-card:hover .project-image img,
+        .project-card:hover .project-image video {
+            transform: scale(1.1);
+        }
+
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.9), rgba(139, 92, 246, 0.9));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+
+        .project-overlay-btn {
+            background: white;
+            color: var(--primary);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover .project-overlay-btn {
+            transform: translateY(0);
+        }
+
+        .project-content {
+            padding: 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-category {
+            display: inline-block;
+            padding: 5px 15px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            align-self: flex-start;
+        }
+
+        .project-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .project-description {
+            color: #64748b;
+            margin-bottom: 15px;
+            flex: 1;
+        }
+
+        .project-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .project-date {
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .project-tag {
+            background: #f1f5f9;
+            color: #64748b;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+        }
+
+        /* Project Modal */
+        .project-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.9);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .project-modal.active {
+            display: flex;
+        }
+
+        .project-modal-content {
+            background: white;
+            border-radius: 20px;
+            max-width: 900px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: slideUp 0.4s ease;
+        }
+
+        .project-modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .project-modal-media {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+        }
+
+        .project-modal-body {
+            padding: 40px;
+        }
+
+        .project-modal-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .project-modal-gallery img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .project-modal-gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        /* Animations */
+        @keyframes float-bubble {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        @keyframes pulse-ring {
+            0% {
+                transform: scale(0.8);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1.4);
+                opacity: 0;
+            }
+        }
+
+        @keyframes rotate-gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .animate-float {
+            animation: float-bubble 6s ease-in-out infinite;
+        }
+
+        .animate-pulse {
+            animation: pulse-ring 2s ease-out infinite;
+        }
+
+        /* Enhanced Animations */
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .stagger-animation > * {
+            opacity: 0;
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .stagger-animation > *:nth-child(1) { animation-delay: 0.1s; }
+        .stagger-animation > *:nth-child(2) { animation-delay: 0.2s; }
+        .stagger-animation > *:nth-child(3) { animation-delay: 0.3s; }
+        .stagger-animation > *:nth-child(4) { animation-delay: 0.4s; }
+        .stagger-animation > *:nth-child(5) { animation-delay: 0.5s; }
+        .stagger-animation > *:nth-child(6) { animation-delay: 0.6s; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .chatbot-window {
+                width: 90%;
+                right: 5%;
+            }
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+
+        .stats {
+            background: white;
+            padding: 60px 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            color: #64748b;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#"><i class="fas fa-robot"></i> AI Automation Pro</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero-content">
+                    <h1>Transform Your Business with AI Automation</h1>
+                    <p>Empowering businesses with cutting-edge AI agents and intelligent automation solutions for unprecedented growth and efficiency.</p>
+                    <button class="btn btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">
+                        Get Started <i class="fas fa-arrow-right ms-2"></i>
+                    </button>
+                </div>
+                <div class="col-lg-6">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 400'%3E%3Cdefs%3E%3ClinearGradient id='grad1' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%236366f1;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%238b5cf6;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='none' width='500' height='400'/%3E%3Ccircle cx='250' cy='200' r='150' fill='url(%23grad1)' opacity='0.2'/%3E%3Cpath d='M250 100 L300 150 L250 200 L200 150 Z' fill='url(%23grad1)'/%3E%3Ccircle cx='250' cy='200' r='80' fill='none' stroke='url(%23grad1)' stroke-width='3'/%3E%3Ccircle cx='250' cy='200' r='50' fill='url(%23grad1)'/%3E%3Cpath d='M250 150 L250 180 M220 200 L280 200 M250 220 L250 250' stroke='white' stroke-width='4' stroke-linecap='round'/%3E%3Ccircle cx='200' cy='120' r='20' fill='%236366f1' opacity='0.5'/%3E%3Ccircle cx='320' cy='280' r='25' fill='%238b5cf6' opacity='0.5'/%3E%3Ccircle cx='350' cy='150' r='15' fill='%236366f1' opacity='0.5'/%3E%3C/svg%3E" alt="AI Automation" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-6 stat-item">
+                    <div class="stat-number" data-count="500">0</div>
+                    <div class="stat-label">Projects Completed</div>
+                </div>
+                <div class="col-md-3 col-6 stat-item">
+                    <div class="stat-number" data-count="98">0</div>
+                    <div class="stat-label">Client Satisfaction %</div>
+                </div>
+                <div class="col-md-3 col-6 stat-item">
+                    <div class="stat-number" data-count="150">0</div>
+                    <div class="stat-label">Happy Clients</div>
+                </div>
+                <div class="col-md-3 col-6 stat-item">
+                    <div class="stat-number" data-count="24">0</div>
+                    <div class="stat-label">24/7 Support</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Our Services</h2>
+                <p class="text-muted mt-3">Comprehensive AI and automation solutions tailored to your business needs</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3>AI Agent Development</h3>
+                        <p>Custom AI agents that understand your business logic and automate complex workflows with intelligent decision-making capabilities.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h3>Process Automation</h3>
+                        <p>Streamline your operations with end-to-end automation solutions that reduce manual work and increase productivity by up to 300%.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>Machine Learning</h3>
+                        <p>Leverage predictive analytics and ML models to gain actionable insights and make data-driven decisions for your business.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h3>Chatbot Solutions</h3>
+                        <p>Intelligent conversational AI that provides 24/7 customer support and enhances user engagement across all platforms.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Data Analytics</h3>
+                        <p>Transform raw data into meaningful insights with advanced analytics and visualization tools for better business intelligence.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Secure Integration</h3>
+                        <p>Seamlessly integrate AI solutions with your existing systems while maintaining the highest security and compliance standards.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Banner -->
+    <section class="banner">
+        <div class="container">
+            <h2 class="mb-4">Ready to Transform Your Business?</h2>
+            <p class="lead mb-4">Join hundreds of satisfied clients who have revolutionized their operations with our AI solutions</p>
+            <button class="btn btn-light btn-lg" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">
+                Schedule a Free Consultation
+            </button>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4">
+                    <h2 class="section-title">Why Choose Us</h2>
+                    <p class="text-muted mb-4">We deliver cutting-edge solutions with proven results</p>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <div>
+                            <h5>Fast Implementation</h5>
+                            <p class="text-muted mb-0">Quick deployment with minimal disruption to your operations</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div>
+                            <h5>Expert Team</h5>
+                            <p class="text-muted mb-0">Certified AI specialists with years of industry experience</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-sync"></i>
+                        </div>
+                        <div>
+                            <h5>Continuous Support</h5>
+                            <p class="text-muted mb-0">24/7 monitoring and support to ensure optimal performance</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div>
+                            <h5>Cost Effective</h5>
+                            <p class="text-muted mb-0">Maximize ROI with scalable solutions that grow with you</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 500'%3E%3Cdefs%3E%3ClinearGradient id='grad2' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%236366f1;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%238b5cf6;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='%23f8fafc' width='600' height='500'/%3E%3Crect x='100' y='100' width='400' height='300' rx='20' fill='white' stroke='url(%23grad2)' stroke-width='3'/%3E%3Crect x='130' y='140' width='150' height='100' rx='10' fill='url(%23grad2)' opacity='0.3'/%3E%3Crect x='320' y='140' width='150' height='100' rx='10' fill='url(%23grad2)' opacity='0.5'/%3E%3Crect x='130' y='270' width='340' height='30' rx='15' fill='url(%23grad2)' opacity='0.2'/%3E%3Crect x='130' y='320' width='340' height='30' rx='15' fill='url(%23grad2)' opacity='0.2'/%3E%3Ccircle cx='450' cy='200' r='60' fill='url(%23grad2)' opacity='0.1'/%3E%3Cpath d='M420 200 L445 225 L480 180' stroke='url(%23grad2)' stroke-width='5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" alt="Features" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Our Projects</h2>
+                <p class="text-muted mt-3">Explore our portfolio of successful AI automation implementations</p>
+            </div>
+
+            <!-- Project Filters -->
+            <div class="project-filters">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="ai-agent">AI Agents</button>
+                <button class="filter-btn" data-filter="automation">Automation</button>
+                <button class="filter-btn" data-filter="chatbot">Chatbots</button>
+                <button class="filter-btn" data-filter="analytics">Analytics</button>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="row stagger-animation" id="projectsGrid">
+                <!-- Project 1 - Video -->
+                <div class="col-lg-4 col-md-6 project-item" data-category="ai-agent">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <video loop muted playsinline>
+                                <source src="data:video/mp4;base64,AAAAIGZ0eXBpc29tAAACAGlzb21pc28yYXZjMW1wNDEAAAAIZnJlZQAAAr1tZGF0AAACrgYF//+q3EXpvebZSLeWLNgg2SPu73gyNjQgLSBjb3JlIDE1MiByMjg1NCBlOWE1OTAzIC0gSC4yNjQvTVBFRy00IEFWQyBjb2RlYyAtIENvcHlsZWZ0IDIwMDMtMjAxNyAtIGh0dHA6Ly93d3cudmlkZW9sYW4ub3JnL3gyNjQuaHRtbCAtIG9wdGlvbnM6IGNhYmFjPTEgcmVmPTMgZGVibG9jaz0xOjA6MCBhbmFseXNlPTB4MzoweDExMyBtZT1oZXggc3VibWU9NyBwc3k9MSBwc3lfcmQ9MS4wMDowLjAwIG1peGVkX3JlZj0xIG1lX3JhbmdlPTE2IGNocm9tYV9tZT0xIHRyZWxsaXM9MSA4eDhkY3Q9MSBjcW09MCBkZWFkem9uZT0yMSwxMSBmYXN0X3Bza2lwPTEgY2hyb21hX3FwX29mZnNldD0tMiB0aHJlYWRzPTYgbG9va2FoZWFkX3RocmVhZHM9MSBzbGljZWRfdGhyZWFkcz0wIG5yPTAgZGVjaW1hdGU9MSBpbnRlcmxhY2VkPTAgYmx1cmF5X2NvbXBhdD0wIGNvbnN0cmFpbmVkX2ludHJhPTAgYmZyYW1lcz0zIGJfcHlyYW1pZD0yIGJfYWRhcHQ9MSBiX2JpYXM9MCBkaXJlY3Q9MSB3ZWlnaHRiPTEgb3Blbl9nb3A9MCB3ZWlnaHRwPTIga2V5aW50PTI1MCBrZXlpbnRfbWluPTI1IHNjZW5lY3V0PTQwIGludHJhX3JlZnJlc2g9MCByY19sb29rYWhlYWQ9NDAgcmM9Y3JmIG1idHJlZT0xIGNyZj0yMy4wIHFjb21wPTAuNjAgcXBtaW49MCBxcG1heD02OSBxcHN0ZXA9NCBpcF9yYXRpbz0xLjQwIGFxPTE6MS4wMACAAAAA" type="video/mp4">
+                            </video>
+                            <div class="project-overlay">
+                                <button class="project-overlay-btn" onclick="openProjectModal('project1')">View Details</button>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <span class="project-category">AI Agent</span>
+                            <h4 class="project-title">Intelligent Customer Service Bot</h4>
+                            <p class="project-description">AI-powered customer service automation handling 10,000+ queries daily with 95% accuracy rate.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">NLP</span>
+                                <span class="project-tag">Python</span>
+                                <span class="project-tag">Cloud</span>
+                            </div>
+                            <div class="project-meta">
+                                <span class="project-date"><i class="far fa-calendar"></i> Dec 2024</span>
+                                <span class="project-date"><i class="far fa-clock"></i> 3 months</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="col-lg-4 col-md-6 project-item" data-category="automation">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Cdefs%3E%3ClinearGradient id='p2' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%236366f1'/%3E%3Cstop offset='100%25' style='stop-color:%238b5cf6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23p2)' width='400' height='300'/%3E%3Ccircle cx='200' cy='150' r='60' fill='white' opacity='0.2'/%3E%3Cpath d='M160 150 L180 170 L220 130' stroke='white' stroke-width='6' fill='none' stroke-linecap='round'/%3E%3Crect x='80' y='80' width='80' height='60' rx='8' fill='white' opacity='0.3'/%3E%3Crect x='240' y='80' width='80' height='60' rx='8' fill='white' opacity='0.3'/%3E%3Crect x='80' y='180' width='80' height='60' rx='8' fill='white' opacity='0.3'/%3E%3Crect x='240' y='180' width='80' height='60' rx='8' fill='white' opacity='0.3'/%3E%3C/svg%3E" alt="Project">
+                            <div class="project-overlay">
+                                <button class="project-overlay-btn" onclick="openProjectModal('project2')">View Details</button>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <span class="project-category">Automation</span>
+                            <h4 class="project-title">Workflow Automation Suite</h4>
+                            <p class="project-description">Complete business process automation reducing operational costs by 60% and improving efficiency.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">RPA</span>
+                                <span class="project-tag">Integration</span>
+                                <span class="project-tag">API</span>
+                            </div>
+                            <div class="project-meta">
+                                <span class="project-date"><i class="far fa-calendar"></i> Nov 2024</span>
+                                <span class="project-date"><i class="far fa-clock"></i> 4 months</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="col-lg-4 col-md-6 project-item" data-category="chatbot">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Cdefs%3E%3ClinearGradient id='p3' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%238b5cf6'/%3E%3Cstop offset='100%25' style='stop-color:%23ec4899'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23p3)' width='400' height='300'/%3E%3Crect x='60' y='60' width='280' height='180' rx='20' fill='white' opacity='0.9'/%3E%3Ccircle cx='120' cy='120' r='30' fill='url(%23p3)' opacity='0.5'/%3E%3Crect x='170' y='100' width='150' height='15' rx='7' fill='%23e2e8f0'/%3E%3Crect x='170' y='130' width='100' height='15' rx='7' fill='%23e2e8f0'/%3E%3Ccircle cx='280' cy='180' r='30' fill='url(%23p3)' opacity='0.5'/%3E%3Crect x='80' y='160' width='150' height='15' rx='7' fill='%23e2e8f0'/%3E%3Crect x='80' y='190' width='120' height='15' rx='7' fill='%23e2e8f0'/%3E%3C/svg%3E" alt="Project">
+                            <div class="project-overlay">
+                                <button class="project-overlay-btn" onclick="openProjectModal('project3')">View Details</button>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <span class="project-category">Chatbot</span>
+                            <h4 class="project-title">E-commerce Assistant</h4>
+                            <p class="project-description">Conversational AI for online shopping with product recommendations and order tracking capabilities.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">NLU</span>
+                                <span class="project-tag">React</span>
+                                <span class="project-tag">AI/ML</span>
+                            </div>
+                            <div class="project-meta">
+                                <span class="project-date"><i class="far fa-calendar"></i> Oct 2024</span>
+                                <span class="project-date"><i class="far fa-clock"></i> 2 months</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="col-lg-4 col-md-6 project-item" data-category="analytics">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Cdefs%3E%3ClinearGradient id='p4' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%2310b981'/%3E%3Cstop offset='100%25' style='stop-color:%233b82f6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23p4)' width='400' height='300'/%3E%3Cpath d='M50 200 L100 180 L150 150 L200 130 L250 100 L300 80 L350 60' stroke='white' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3Ccircle cx='50' cy='200' r='8' fill='white'/%3E%3Ccircle cx='100' cy='180' r='8' fill='white'/%3E%3Ccircle cx='150' cy='150' r='8' fill='white'/%3E%3Ccircle cx='200' cy='130' r='8' fill='white'/%3E%3Ccircle cx='250' cy='100' r='8' fill='white'/%3E%3Ccircle cx='300' cy='80' r='8' fill='white'/%3E%3Ccircle cx='350' cy='60' r='8' fill='white'/%3E%3Crect x='280' y='30' width='80' height='50' rx='8' fill='white' opacity='0.3'/%3E%3Ctext x='320' y='60' text-anchor='middle' fill='white' font-size='24' font-weight='bold'%3E+45%25%3C/text%3E%3C/svg%3E" alt="Project">
+                            <div class="project-overlay">
+                                <button class="project-overlay-btn" onclick="openProjectModal('project4')">View Details</button>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <span class="project-category">Analytics</span>
+                            <h4 class="project-title">Predictive Analytics Dashboard</h4>
+                            <p class="project-description">Real-time data analytics with ML-powered predictions for business intelligence and forecasting.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Machine Learning</span>
+                                <span class="project-tag">BI</span>
+                                <span class="project-tag">Data</span>
+                            </div>
+                            <div class="project-meta">
+                                <span class="project-date"><i class="far fa-calendar"></i> Sep 2024</span>
+                                <span class="project-date"><i class="far fa-clock"></i> 5 months</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="col-lg-4 col-md-6 project-item" data-category="ai-agent">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Cdefs%3E%3ClinearGradient id='p5' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23f59e0b'/%3E%3Cstop offset='100%25' style='stop-color:%23ef4444'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23p5)' width='400' height='300'/%3E%3Ccircle cx='200' cy='150' r='80' fill='white' opacity='0.2'/%3E%3Ccircle cx='200' cy='150' r='50' fill='white' opacity='0.3'/%3E%3Ccircle cx='200' cy='150' r='25' fill='white' opacity='0.5'/%3E%3Cpath d='M200 100 L200 80 M200 200 L200 220 M250 150 L270 150 M150 150 L130 150' stroke='white' stroke-width='5' stroke-linecap='round'/%3E%3Ccircle cx='200' cy='150' r='15' fill='white'/%3E%3C/svg%3E" alt="Project">
+                            <div class="project-overlay">
+                                <button class="project-overlay-btn" onclick="openProjectModal('project5')">View Details</button>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <span class="project-category">AI Agent</span>
+                            <h4 class="project-title">Smart Document Processor</h4>
+                            <p class="project-description">AI agent for automated document analysis, data extraction, and intelligent classification.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">OCR</span>
+                                <span class="project-tag">NLP</span>
+                                <span class="project-tag">Vision AI</span>
+                            </div>
+                            <div class="project-meta">
+                                <span class="project-date"><i class="far fa-calendar"></i> Aug 2024</span>
+                                <span class="project-date"><i class="far fa-clock"></i> 3 months</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="col-lg-4 col-md-6 project-item" data-category="automation">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Cdefs%3E%3ClinearGradient id='p6' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%236366f1'/%3E%3Cstop offset='100%25' style='stop-color:%2314b8a6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23p6)' width='400' height='300'/%3E%3Crect x='80' y='80' width='60' height='60' rx='10' fill='white' opacity='0.3'/%3E%3Crect x='170' y='80' width='60' height='60' rx='10' fill='white' opacity='0.5'/%3E%3Crect x='260' y='80' width='60' height='60' rx='10' fill='white' opacity='0.3'/%3E%3Cpath d='M140 110 L170 110 M230 110 L260 110' stroke='white' stroke-width='4'/%3E%3Crect x='125' y='160' width='150' height='60' rx='10' fill='white' opacity='0.4'/%3E%3Cpath d='M200 140 L200 160' stroke='white' stroke-width='4'/%3E%3C/svg%3E" alt="Project">
+                            <div class="project-overlay">
+                                <button class="project-overlay-btn" onclick="openProjectModal('project6')">View Details</button>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <span class="project-category">Automation</span>
+                            <h4 class="project-title">Supply Chain Optimizer</h4>
+                            <p class="project-description">End-to-end supply chain automation with inventory management and demand forecasting.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">IoT</span>
+                                <span class="project-tag">Automation</span>
+                                <span class="project-tag">ML</span>
+                            </div>
+                            <div class="project-meta">
+                                <span class="project-date"><i class="far fa-calendar"></i> Jul 2024</span>
+                                <span class="project-date"><i class="far fa-clock"></i> 6 months</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Modal -->
+    <div class="project-modal" id="projectModal">
+        <div class="project-modal-content">
+            <button class="project-modal-close" onclick="closeProjectModal()">×</button>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="text-muted mt-3">Let's discuss how we can help transform your business</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="bg-white p-5 rounded-3 shadow-sm h-100">
+                        <h4 class="mb-4">Send Us a Message</h4>
+                        <form id="contactForm">
+                            <div class="mb-3">
+                                <input type="text" class="form-control" placeholder="Your Name" required>
+                            </div>
+                            <div class="mb-3">
+                                <input type="email" class="form-control" placeholder="Your Email" required>
+                            </div>
+                            <div class="mb-3">
+                                <input type="tel" class="form-control" placeholder="Phone Number">
+                            </div>
+                            <div class="mb-3">
+                                <select class="form-control" required>
+                                    <option value="">Select
