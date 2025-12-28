@@ -25,16 +25,17 @@
             overflow-x: hidden;
         }
 
-        /* Navbar */
+        /* Navbar - Fixed for Mobile */
         .navbar {
-            background: rgba(30, 27, 75, 0.95) !important;
+            background: rgba(30, 27, 75, 0.98) !important;
             backdrop-filter: blur(10px);
             box-shadow: 0 2px 20px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
+            padding: 15px 0;
         }
 
         .navbar.scrolled {
-            padding: 5px 0;
+            padding: 10px 0;
         }
 
         .navbar-brand {
@@ -43,17 +44,55 @@
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .navbar-toggler {
+            border: 2px solid rgba(255,255,255,0.3);
+            padding: 8px 12px;
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: 0 0 0 0.2rem rgba(99, 102, 241, 0.5);
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+
+        .navbar-collapse {
+            background: rgba(30, 27, 75, 0.98);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+
+        @media (min-width: 992px) {
+            .navbar-collapse {
+                background: transparent;
+                padding: 0;
+                margin-top: 0;
+            }
         }
 
         .nav-link {
             color: #fff !important;
-            margin: 0 10px;
+            margin: 10px 0;
+            padding: 10px 15px !important;
             transition: all 0.3s ease;
             position: relative;
+            border-radius: 8px;
+        }
+
+        @media (min-width: 992px) {
+            .nav-link {
+                margin: 0 10px;
+            }
         }
 
         .nav-link:hover {
             color: var(--primary) !important;
+            background: rgba(99, 102, 241, 0.1);
         }
 
         .nav-link::after {
@@ -61,7 +100,7 @@
             position: absolute;
             width: 0;
             height: 2px;
-            bottom: 0;
+            bottom: 5px;
             left: 50%;
             background: var(--primary);
             transition: all 0.3s ease;
@@ -69,14 +108,14 @@
         }
 
         .nav-link:hover::after {
-            width: 80%;
+            width: 60%;
         }
 
         /* Hero Section */
         .hero {
             background: linear-gradient(135deg, var(--dark) 0%, #312e81 100%);
             color: white;
-            padding: 120px 0 80px;
+            padding: 140px 0 80px;
             position: relative;
             overflow: hidden;
         }
@@ -104,16 +143,28 @@
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 2.5rem;
             font-weight: 800;
             margin-bottom: 20px;
             animation: slideInDown 1s ease;
         }
 
+        @media (min-width: 768px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+        }
+
         .hero p {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             margin-bottom: 30px;
             animation: slideInUp 1s ease;
+        }
+
+        @media (min-width: 768px) {
+            .hero p {
+                font-size: 1.3rem;
+            }
         }
 
         @keyframes slideInDown {
@@ -146,6 +197,7 @@
             border-radius: 50px;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+            color: white;
         }
 
         .btn-primary:hover {
@@ -192,6 +244,101 @@
 
         .service-card:hover .service-icon {
             transform: rotateY(360deg);
+        }
+
+        /* Demo Videos Section */
+        .demo-videos {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .video-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .video-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.2);
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-top: 56.25%;
+            background: #000;
+        }
+
+        .video-wrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .video-content {
+            padding: 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .video-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .video-description {
+            color: #64748b;
+            margin-bottom: 15px;
+            flex: 1;
+        }
+
+        .video-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px solid #e2e8f0;
+            font-size: 0.9rem;
+            color: #94a3b8;
+        }
+
+        .play-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70px;
+            height: 70px;
+            background: rgba(99, 102, 241, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .play-overlay:hover {
+            background: rgba(139, 92, 246, 0.9);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .play-overlay i {
+            color: white;
+            font-size: 2rem;
+            margin-left: 5px;
         }
 
         /* Banner Section */
@@ -297,124 +444,6 @@
             box-shadow: 0 6px 30px rgba(99, 102, 241, 0.7);
         }
 
-        .chatbot-window {
-            position: fixed;
-            bottom: 100px;
-            right: 30px;
-            width: 350px;
-            height: 500px;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-            display: none;
-            flex-direction: column;
-            z-index: 1000;
-            overflow: hidden;
-        }
-
-        .chatbot-window.active {
-            display: flex;
-            animation: slideUp 0.3s ease;
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .chatbot-header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .chatbot-body {
-            flex: 1;
-            padding: 20px;
-            overflow-y: auto;
-            background: #f8fafc;
-        }
-
-        .chatbot-message {
-            margin-bottom: 15px;
-            display: flex;
-        }
-
-        .chatbot-message.bot {
-            justify-content: flex-start;
-        }
-
-        .chatbot-message.user {
-            justify-content: flex-end;
-        }
-
-        .message-bubble {
-            max-width: 70%;
-            padding: 12px 18px;
-            border-radius: 18px;
-            animation: fadeIn 0.3s ease;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: scale(0.8);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        .message-bubble.bot {
-            background: white;
-            color: #333;
-            border-bottom-left-radius: 4px;
-        }
-
-        .message-bubble.user {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            border-bottom-right-radius: 4px;
-        }
-
-        .chatbot-input {
-            display: flex;
-            padding: 15px;
-            background: white;
-            border-top: 1px solid #e2e8f0;
-        }
-
-        .chatbot-input input {
-            flex: 1;
-            border: 1px solid #e2e8f0;
-            border-radius: 25px;
-            padding: 10px 20px;
-            margin-right: 10px;
-        }
-
-        .chatbot-input button {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-        }
-
         /* Footer */
         footer {
             background: var(--dark);
@@ -480,319 +509,225 @@
             transform: translateY(-5px);
         }
 
-        /* Projects Section */
-        .projects {
-            padding: 80px 0;
+        /* Stats Section */
+        .stats {
             background: white;
+            padding: 60px 0;
         }
 
-        .project-filters {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-            gap: 15px;
+        .stat-item {
+            text-align: center;
+            padding: 20px;
         }
 
-        .filter-btn {
-            padding: 10px 30px;
-            border: 2px solid var(--primary);
-            background: white;
-            color: var(--primary);
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 600;
-        }
-
-        .filter-btn:hover, .filter-btn.active {
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .project-card {
+        .stat-label {
+            color: #64748b;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        /* Reviews Section */
+        .reviews {
+            padding: 80px 0;
+            background: var(--light);
+        }
+
+        .featured-review {
             background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            margin-bottom: 30px;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .project-card:hover {
-            transform: translateY(-15px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
-        }
-
-        .project-image {
+            padding: 50px;
+            border-radius: 25px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
             position: relative;
             overflow: hidden;
-            height: 250px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
         }
 
-        .project-image img, .project-image video {
+        .featured-review::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 30px;
+            font-size: 150px;
+            color: rgba(99, 102, 241, 0.1);
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        .stars {
+            color: #fbbf24;
+            font-size: 1.2rem;
+        }
+
+        .stars i {
+            margin-right: 3px;
+        }
+
+        .review-text {
+            font-size: 1.3rem;
+            color: #475569;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .review-author {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .author-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid var(--primary);
+        }
+
+        .author-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: all 0.5s ease;
         }
 
-        .project-card:hover .project-image img,
-        .project-card:hover .project-image video {
-            transform: scale(1.1);
+        .author-info h5 {
+            margin: 0;
+            color: var(--dark);
+            font-weight: 700;
+            font-size: 1.2rem;
         }
 
-        .project-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.9), rgba(139, 92, 246, 0.9));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: all 0.3s ease;
+        .author-info p {
+            margin: 5px 0;
+            color: #64748b;
+            font-size: 1rem;
         }
 
-        .project-card:hover .project-overlay {
-            opacity: 1;
-        }
-
-        .project-overlay-btn {
-            background: white;
-            color: var(--primary);
-            border: none;
-            padding: 12px 30px;
-            border-radius: 25px;
-            font-weight: 600;
-            cursor: pointer;
-            transform: translateY(20px);
-            transition: all 0.3s ease;
-        }
-
-        .project-card:hover .project-overlay-btn {
-            transform: translateY(0);
-        }
-
-        .project-content {
-            padding: 25px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .project-category {
+        .company-badge {
             display: inline-block;
             padding: 5px 15px;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
-            border-radius: 15px;
+            border-radius: 20px;
             font-size: 0.85rem;
-            margin-bottom: 15px;
-            align-self: flex-start;
+            margin-top: 5px;
         }
 
-        .project-title {
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: var(--dark);
+        .review-card {
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            height: 100%;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
         }
 
-        .project-description {
-            color: #64748b;
-            margin-bottom: 15px;
+        .review-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.15);
+        }
+
+        .review-card .review-text {
+            font-size: 1rem;
             flex: 1;
         }
 
-        .project-meta {
+        .review-author-small {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding-top: 15px;
+            gap: 15px;
+            margin: 20px 0;
+            padding-top: 20px;
             border-top: 1px solid #e2e8f0;
         }
 
-        .project-date {
-            color: #94a3b8;
-            font-size: 0.9rem;
-        }
-
-        .project-tags {
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-            margin-top: 10px;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.1rem;
+            flex-shrink: 0;
         }
 
-        .project-tag {
-            background: #f1f5f9;
+        .review-author-small h6 {
+            margin: 0;
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        .review-author-small p {
+            margin: 3px 0 0 0;
             color: #64748b;
-            padding: 4px 12px;
-            border-radius: 12px;
             font-size: 0.85rem;
         }
 
-        /* Project Modal */
-        .project-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.9);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .project-modal.active {
+        .review-stats {
             display: flex;
-        }
-
-        .project-modal-content {
-            background: white;
-            border-radius: 20px;
-            max-width: 900px;
-            max-height: 90vh;
-            overflow-y: auto;
-            position: relative;
-            animation: slideUp 0.4s ease;
-        }
-
-        .project-modal-close {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background: white;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-        }
-
-        .project-modal-media {
-            width: 100%;
-            max-height: 500px;
-            object-fit: cover;
-        }
-
-        .project-modal-body {
-            padding: 40px;
-        }
-
-        .project-modal-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 15px;
-            margin-top: 20px;
+            flex-wrap: wrap;
+            margin-top: 15px;
         }
 
-        .project-modal-gallery img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
+        .review-stats span {
+            background: #f1f5f9;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: #64748b;
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
 
-        .project-modal-gallery img:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        .review-stats i {
+            color: var(--primary);
         }
 
-        /* Animations */
-        @keyframes float-bubble {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(5deg); }
+        .review-summary {
+            background: white;
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
         }
 
-        @keyframes pulse-ring {
-            0% {
-                transform: scale(0.8);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(1.4);
-                opacity: 0;
-            }
+        .summary-item {
+            padding: 20px;
         }
 
-        @keyframes rotate-gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        .summary-item h3 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
         }
 
-        .animate-float {
-            animation: float-bubble 6s ease-in-out infinite;
+        .summary-item p {
+            color: #64748b;
+            margin: 0;
         }
 
-        .animate-pulse {
-            animation: pulse-ring 2s ease-out infinite;
-        }
-
-        /* Enhanced Animations */
-        .fade-in-up {
-            animation: fadeInUp 0.6s ease forwards;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .stagger-animation > * {
-            opacity: 0;
-            animation: fadeInUp 0.6s ease forwards;
-        }
-
-        .stagger-animation > *:nth-child(1) { animation-delay: 0.1s; }
-        .stagger-animation > *:nth-child(2) { animation-delay: 0.2s; }
-        .stagger-animation > *:nth-child(3) { animation-delay: 0.3s; }
-        .stagger-animation > *:nth-child(4) { animation-delay: 0.4s; }
-        .stagger-animation > *:nth-child(5) { animation-delay: 0.5s; }
-        .stagger-animation > *:nth-child(6) { animation-delay: 0.6s; }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .chatbot-window {
-                width: 90%;
-                right: 5%;
-            }
+        .summary-item .stars {
+            font-size: 1rem;
+            margin-top: 10px;
         }
 
         .section-title {
@@ -814,28 +749,19 @@
             border-radius: 2px;
         }
 
-        .stats {
-            background: white;
-            padding: 60px 0;
-        }
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 120px 0 60px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
 
-        .stat-item {
-            text-align: center;
-            padding: 20px;
-        }
-
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .stat-label {
-            color: #64748b;
-            font-size: 1.1rem;
-            margin-top: 10px;
+            .stat-number {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
@@ -844,15 +770,16 @@
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#"><i class="fas fa-robot"></i> AI Automation Pro</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#demos">Demos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#reviews">Reviews</a></li>
                     <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                 </ul>
             </div>
@@ -882,20 +809,20 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-3 col-6 stat-item">
-                    <div class="stat-number" data-count="500">0</div>
+                    <div class="stat-number">500+</div>
                     <div class="stat-label">Projects Completed</div>
                 </div>
                 <div class="col-md-3 col-6 stat-item">
-                    <div class="stat-number" data-count="98">0</div>
-                    <div class="stat-label">Client Satisfaction %</div>
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">Client Satisfaction</div>
                 </div>
                 <div class="col-md-3 col-6 stat-item">
-                    <div class="stat-number" data-count="150">0</div>
+                    <div class="stat-number">150+</div>
                     <div class="stat-label">Happy Clients</div>
                 </div>
                 <div class="col-md-3 col-6 stat-item">
-                    <div class="stat-number" data-count="24">0</div>
-                    <div class="stat-label">24/7 Support</div>
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Support</div>
                 </div>
             </div>
         </div>
@@ -961,6 +888,370 @@
                         </div>
                         <h3>Secure Integration</h3>
                         <p>Seamlessly integrate AI solutions with your existing systems while maintaining the highest security and compliance standards.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Videos Section -->
+    <section class="demo-videos" id="demos">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">AI Agent Development Demos</h2>
+                <p class="text-muted mt-3">Watch our AI automation solutions being built and deployed</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="video-card">
+                        <div class="video-wrapper">
+                            <video id="video1" loop muted>
+                                <source src="https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-futuristic-device-1366-large.mp4" type="video/mp4">
+                            </video>
+                            <div class="play-overlay" onclick="playVideo('video1')">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="video-content">
+                            <h4 class="video-title">Building an E-commerce AI Agent</h4>
+                            <p class="video-description">Watch how we develop custom AI agents from scratch - training, integration, and deployment process.</p>
+                            <div class="video-meta">
+                                <span><i class="fas fa-code"></i> Development Process</span>
+                                <span><i class="fas fa-clock"></i> 5 min</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="video-card">
+                        <div class="video-wrapper">
+                            <video id="video2" loop muted>
+                                <source src="https://assets.mixkit.co/videos/preview/mixkit-technology-background-with-lines-and-particles-1366-large.mp4" type="video/mp4">
+                            </video>
+                            <div class="play-overlay" onclick="playVideo('video2')">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="video-content">
+                            <h4 class="video-title">System Automation Workflow</h4>
+                            <p class="video-description">Complete automation setup: API integration, workflow design, testing, and real-time monitoring dashboard.</p>
+                            <div class="video-meta">
+                                <span><i class="fas fa-cogs"></i> Automation Setup</span>
+                                <span><i class="fas fa-clock"></i> 6 min</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="video-card">
+                        <div class="video-wrapper">
+                            <video id="video3" loop muted>
+                                <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-futuristic-technology-background-1366-large.mp4" type="video/mp4">
+                            </video>
+                            <div class="play-overlay" onclick="playVideo('video3')">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="video-content">
+                            <h4 class="video-title">AI Agent in Action - Live Demo</h4>
+                            <p class="video-description">Real-time demonstration of AI agent handling customer queries, processing data, and making decisions.</p>
+                            <div class="video-meta">
+                                <span><i class="fas fa-robot"></i> Live Demo</span>
+                                <span><i class="fas fa-clock"></i> 4 min</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Demo Videos -->
+            <div class="row g-4 mt-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="video-card">
+                        <div class="video-wrapper">
+                            <video id="video4" loop muted>
+                                <source src="https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-futuristic-device-1366-large.mp4" type="video/mp4">
+                            </video>
+                            <div class="play-overlay" onclick="playVideo('video4')">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="video-content">
+                            <h4 class="video-title">NLP Chatbot Creation</h4>
+                            <p class="video-description">Step-by-step chatbot development with natural language processing and sentiment analysis capabilities.</p>
+                            <div class="video-meta">
+                                <span><i class="fas fa-comments"></i> Chatbot Build</span>
+                                <span><i class="fas fa-clock"></i> 7 min</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="video-card">
+                        <div class="video-wrapper">
+                            <video id="video5" loop muted>
+                                <source src="https://assets.mixkit.co/videos/preview/mixkit-technology-background-with-lines-and-particles-1366-large.mp4" type="video/mp4">
+                            </video>
+                            <div class="play-overlay" onclick="playVideo('video5')">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="video-content">
+                            <h4 class="video-title">Data Pipeline Automation</h4>
+                            <p class="video-description">Automating data collection, processing, and analysis with AI-powered insights generation.</p>
+                            <div class="video-meta">
+                                <span><i class="fas fa-database"></i> Data Pipeline</span>
+                                <span><i class="fas fa-clock"></i> 5 min</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="video-card">
+                        <div class="video-wrapper">
+                            <video id="video6" loop muted>
+                                <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-futuristic-technology-background-1366-large.mp4" type="video/mp4">
+                            </video>
+                            <div class="play-overlay" onclick="playVideo('video6')">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="video-content">
+                            <h4 class="video-title">AI Model Training & Deployment</h4>
+                            <p class="video-description">From data preparation to model deployment - complete machine learning workflow demonstration.</p>
+                            <div class="video-meta">
+                                <span><i class="fas fa-brain"></i> ML Pipeline</span>
+                                <span><i class="fas fa-clock"></i> 8 min</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Reviews Section -->
+    <section class="reviews" id="reviews">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">What Our Clients Say</h2>
+                <p class="text-muted mt-3">Real feedback from businesses we've transformed</p>
+            </div>
+
+            <!-- Featured Review -->
+            <div class="row mb-5">
+                <div class="col-lg-10 mx-auto">
+                    <div class="featured-review">
+                        <div class="stars mb-3">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text">"The AI automation system they built for us has been absolutely transformative. We've reduced our operational costs by 60% and improved customer satisfaction by 85%. The team's expertise in building custom AI agents is unmatched. They understood our complex workflow and delivered a solution that exceeded all expectations."</p>
+                        <div class="review-author">
+                            <div class="author-image">
+                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%236366f1'/%3E%3Ctext x='50' y='60' text-anchor='middle' fill='white' font-size='40' font-weight='bold'%3ESJ%3C/text%3E%3C/svg%3E" alt="Sarah Johnson">
+                            </div>
+                            <div class="author-info">
+                                <h5>Sarah Johnson</h5>
+                                <p>CEO, TechRetail Inc.</p>
+                                <span class="company-badge">E-commerce • 500+ employees</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Review Grid -->
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="review-card">
+                        <div class="stars mb-3">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text">"Their AI agent handles our customer support 24/7. We've gone from 8-hour response times to instant replies. Customer satisfaction scores jumped from 72% to 94%!"</p>
+                        <div class="review-author-small">
+                            <div class="author-avatar">MR</div>
+                            <div>
+                                <h6>Michael Rodriguez</h6>
+                                <p>Operations Director, FinServe Solutions</p>
+                            </div>
+                        </div>
+                        <div class="review-stats">
+                            <span><i class="fas fa-chart-line"></i> 94% satisfaction</span>
+                            <span><i class="fas fa-clock"></i> Instant response</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="review-card">
+                        <div class="stars mb-3">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text">"The document processing automation saved us 200+ hours per month. What used to take our team 5 days now completes in 2 hours with 99.8% accuracy!"</p>
+                        <div class="review-author-small">
+                            <div class="author-avatar">EC</div>
+                            <div>
+                                <h6>Emily Chen</h6>
+                                <p>CFO, GlobalTrade Logistics</p>
+                            </div>
+                        </div>
+                        <div class="review-stats">
+                            <span><i class="fas fa-clock"></i> 200+ hrs saved/mo</span>
+                            <span><i class="fas fa-check-circle"></i> 99.8% accuracy</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="review-card">
+                        <div class="stars mb-3">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text">"ROI in just 3 months! The AI system they built processes our inventory management, predicts demand, and optimizes our supply chain automatically."</p>
+                        <div class="review-author-small">
+                            <div class="author-avatar">DK</div>
+                            <div>
+                                <h6>David Kim</h6>
+                                <p>VP Supply Chain, MegaMart</p>
+                            </div>
+                        </div>
+                        <div class="review-stats">
+                            <span><i class="fas fa-dollar-sign"></i> 3-month ROI</span>
+                            <span><i class="fas fa-chart-line"></i> 45% cost reduction</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="review-card">
+                        <div class="stars mb-3">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text">"Professional, responsive, and incredibly skilled. They turned our manual processes into a fully automated intelligent system. Best investment we've made!"</p>
+                        <div class="review-author-small">
+                            <div class="author-avatar">LP</div>
+                            <div>
+                                <h6>Lisa Patel</h6>
+                                <p>CTO, HealthTech Systems</p>
+                            </div>
+                        </div>
+                        <div class="review-stats">
+                            <span><i class="fas fa-users"></i> 50+ team members</span>
+                            <span><i class="fas fa-thumbs-up"></i> 100% satisfied</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="review-card">
+                        <div class="stars mb-3">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text">"Their chatbot handles 10,000+ conversations daily without breaking a sweat. Our support team can now focus on complex issues. Game-changer!"</p>
+                        <div class="review-author-small">
+                            <div class="author-avatar">JB</div>
+                            <div>
+                                <h6>James Brown</h6>
+                                <p>Customer Experience Lead, ShopWave</p>
+                            </div>
+                        </div>
+                        <div class="review-stats">
+                            <span><i class="fas fa-comments"></i> 10K+ daily chats</span>
+                            <span><i class="fas fa-robot"></i> 95% automation</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="review-card">
+                        <div class="stars mb-3">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text">"From concept to deployment in 6 weeks. Their agile approach and technical expertise made the whole process smooth and stress-free."</p>
+                        <div class="review-author-small">
+                            <div class="author-avatar">AN</div>
+                            <div>
+                                <h6>Amanda Nelson</h6>
+                                <p>Product Manager, DataFlow Inc.</p>
+                            </div>
+                        </div>
+                        <div class="review-stats">
+                            <span><i class="fas fa-rocket"></i> 6-week delivery</span>
+                            <span><i class="fas fa-star"></i> 5-star experience</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Review Summary -->
+            <div class="row mt-5">
+                <div class="col-lg-8 mx-auto">
+                    <div class="review-summary">
+                        <div class="row text-center">
+                            <div class="col-md-3 col-6 mb-3">
+                                <div class="summary-item">
+                                    <h3>4.9/5.0</h3>
+                                    <p>Average Rating</p>
+                                    <div class="stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-6 mb-3">
+                                <div class="summary-item">
+                                    <h3>350+</h3>
+                                    <p>Total Reviews</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-6 mb-3">
+                                <div class="summary-item">
+                                    <h3>98%</h3>
+                                    <p>Recommend Us</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-6 mb-3">
+                                <div class="summary-item">
+                                    <h3>100%</h3>
+                                    <p>Project Success</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1033,194 +1324,6 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section class="projects" id="projects">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="section-title">Our Projects</h2>
-                <p class="text-muted mt-3">Explore our portfolio of successful AI automation implementations</p>
-            </div>
-
-            <!-- Project Filters -->
-            <div class="project-filters">
-                <button class="filter-btn active" data-filter="all">All Projects</button>
-                <button class="filter-btn" data-filter="ai-agent">AI Agents</button>
-                <button class="filter-btn" data-filter="automation">Automation</button>
-                <button class="filter-btn" data-filter="chatbot">Chatbots</button>
-                <button class="filter-btn" data-filter="analytics">Analytics</button>
-            </div>
-
-            <!-- Projects Grid -->
-            <div class="row stagger-animation" id="projectsGrid">
-                <!-- Project 1 - Video -->
-                <div class="col-lg-4 col-md-6 project-item" data-category="ai-agent">
-                    <div class="project-card">
-                        <div class="project-image">
-                            <video loop muted playsinline>
-                                <source src="data:video/mp4;base64,AAAAIGZ0eXBpc29tAAACAGlzb21pc28yYXZjMW1wNDEAAAAIZnJlZQAAAr1tZGF0AAACrgYF//+q3EXpvebZSLeWLNgg2SPu73gyNjQgLSBjb3JlIDE1MiByMjg1NCBlOWE1OTAzIC0gSC4yNjQvTVBFRy00IEFWQyBjb2RlYyAtIENvcHlsZWZ0IDIwMDMtMjAxNyAtIGh0dHA6Ly93d3cudmlkZW9sYW4ub3JnL3gyNjQuaHRtbCAtIG9wdGlvbnM6IGNhYmFjPTEgcmVmPTMgZGVibG9jaz0xOjA6MCBhbmFseXNlPTB4MzoweDExMyBtZT1oZXggc3VibWU9NyBwc3k9MSBwc3lfcmQ9MS4wMDowLjAwIG1peGVkX3JlZj0xIG1lX3JhbmdlPTE2IGNocm9tYV9tZT0xIHRyZWxsaXM9MSA4eDhkY3Q9MSBjcW09MCBkZWFkem9uZT0yMSwxMSBmYXN0X3Bza2lwPTEgY2hyb21hX3FwX29mZnNldD0tMiB0aHJlYWRzPTYgbG9va2FoZWFkX3RocmVhZHM9MSBzbGljZWRfdGhyZWFkcz0wIG5yPTAgZGVjaW1hdGU9MSBpbnRlcmxhY2VkPTAgYmx1cmF5X2NvbXBhdD0wIGNvbnN0cmFpbmVkX2ludHJhPTAgYmZyYW1lcz0zIGJfcHlyYW1pZD0yIGJfYWRhcHQ9MSBiX2JpYXM9MCBkaXJlY3Q9MSB3ZWlnaHRiPTEgb3Blbl9nb3A9MCB3ZWlnaHRwPTIga2V5aW50PTI1MCBrZXlpbnRfbWluPTI1IHNjZW5lY3V0PTQwIGludHJhX3JlZnJlc2g9MCByY19sb29rYWhlYWQ9NDAgcmM9Y3JmIG1idHJlZT0xIGNyZj0yMy4wIHFjb21wPTAuNjAgcXBtaW49MCBxcG1heD02OSBxcHN0ZXA9NCBpcF9yYXRpbz0xLjQwIGFxPTE6MS4wMACAAAAA" type="video/mp4">
-                            </video>
-                            <div class="project-overlay">
-                                <button class="project-overlay-btn" onclick="openProjectModal('project1')">View Details</button>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <span class="project-category">AI Agent</span>
-                            <h4 class="project-title">Intelligent Customer Service Bot</h4>
-                            <p class="project-description">AI-powered customer service automation handling 10,000+ queries daily with 95% accuracy rate.</p>
-                            <div class="project-tags">
-                                <span class="project-tag">NLP</span>
-                                <span class="project-tag">Python</span>
-                                <span class="project-tag">Cloud</span>
-                            </div>
-                            <div class="project-meta">
-                                <span class="project-date"><i class="far fa-calendar"></i> Dec 2024</span>
-                                <span class="project-date"><i class="far fa-clock"></i> 3 months</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 2 -->
-                <div class="col-lg-4 col-md-6 project-item" data-category="automation">
-                    <div class="project-card">
-                        <div class="project-image">
-                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Cdefs%3E%3ClinearGradient id='p2' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%236366f1'/%3E%3Cstop offset='100%25' style='stop-color:%238b5cf6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23p2)' width='400' height='300'/%3E%3Ccircle cx='200' cy='150' r='60' fill='white' opacity='0.2'/%3E%3Cpath d='M160 150 L180 170 L220 130' stroke='white' stroke-width='6' fill='none' stroke-linecap='round'/%3E%3Crect x='80' y='80' width='80' height='60' rx='8' fill='white' opacity='0.3'/%3E%3Crect x='240' y='80' width='80' height='60' rx='8' fill='white' opacity='0.3'/%3E%3Crect x='80' y='180' width='80' height='60' rx='8' fill='white' opacity='0.3'/%3E%3Crect x='240' y='180' width='80' height='60' rx='8' fill='white' opacity='0.3'/%3E%3C/svg%3E" alt="Project">
-                            <div class="project-overlay">
-                                <button class="project-overlay-btn" onclick="openProjectModal('project2')">View Details</button>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <span class="project-category">Automation</span>
-                            <h4 class="project-title">Workflow Automation Suite</h4>
-                            <p class="project-description">Complete business process automation reducing operational costs by 60% and improving efficiency.</p>
-                            <div class="project-tags">
-                                <span class="project-tag">RPA</span>
-                                <span class="project-tag">Integration</span>
-                                <span class="project-tag">API</span>
-                            </div>
-                            <div class="project-meta">
-                                <span class="project-date"><i class="far fa-calendar"></i> Nov 2024</span>
-                                <span class="project-date"><i class="far fa-clock"></i> 4 months</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="col-lg-4 col-md-6 project-item" data-category="chatbot">
-                    <div class="project-card">
-                        <div class="project-image">
-                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Cdefs%3E%3ClinearGradient id='p3' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%238b5cf6'/%3E%3Cstop offset='100%25' style='stop-color:%23ec4899'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23p3)' width='400' height='300'/%3E%3Crect x='60' y='60' width='280' height='180' rx='20' fill='white' opacity='0.9'/%3E%3Ccircle cx='120' cy='120' r='30' fill='url(%23p3)' opacity='0.5'/%3E%3Crect x='170' y='100' width='150' height='15' rx='7' fill='%23e2e8f0'/%3E%3Crect x='170' y='130' width='100' height='15' rx='7' fill='%23e2e8f0'/%3E%3Ccircle cx='280' cy='180' r='30' fill='url(%23p3)' opacity='0.5'/%3E%3Crect x='80' y='160' width='150' height='15' rx='7' fill='%23e2e8f0'/%3E%3Crect x='80' y='190' width='120' height='15' rx='7' fill='%23e2e8f0'/%3E%3C/svg%3E" alt="Project">
-                            <div class="project-overlay">
-                                <button class="project-overlay-btn" onclick="openProjectModal('project3')">View Details</button>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <span class="project-category">Chatbot</span>
-                            <h4 class="project-title">E-commerce Assistant</h4>
-                            <p class="project-description">Conversational AI for online shopping with product recommendations and order tracking capabilities.</p>
-                            <div class="project-tags">
-                                <span class="project-tag">NLU</span>
-                                <span class="project-tag">React</span>
-                                <span class="project-tag">AI/ML</span>
-                            </div>
-                            <div class="project-meta">
-                                <span class="project-date"><i class="far fa-calendar"></i> Oct 2024</span>
-                                <span class="project-date"><i class="far fa-clock"></i> 2 months</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 4 -->
-                <div class="col-lg-4 col-md-6 project-item" data-category="analytics">
-                    <div class="project-card">
-                        <div class="project-image">
-                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Cdefs%3E%3ClinearGradient id='p4' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%2310b981'/%3E%3Cstop offset='100%25' style='stop-color:%233b82f6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23p4)' width='400' height='300'/%3E%3Cpath d='M50 200 L100 180 L150 150 L200 130 L250 100 L300 80 L350 60' stroke='white' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3Ccircle cx='50' cy='200' r='8' fill='white'/%3E%3Ccircle cx='100' cy='180' r='8' fill='white'/%3E%3Ccircle cx='150' cy='150' r='8' fill='white'/%3E%3Ccircle cx='200' cy='130' r='8' fill='white'/%3E%3Ccircle cx='250' cy='100' r='8' fill='white'/%3E%3Ccircle cx='300' cy='80' r='8' fill='white'/%3E%3Ccircle cx='350' cy='60' r='8' fill='white'/%3E%3Crect x='280' y='30' width='80' height='50' rx='8' fill='white' opacity='0.3'/%3E%3Ctext x='320' y='60' text-anchor='middle' fill='white' font-size='24' font-weight='bold'%3E+45%25%3C/text%3E%3C/svg%3E" alt="Project">
-                            <div class="project-overlay">
-                                <button class="project-overlay-btn" onclick="openProjectModal('project4')">View Details</button>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <span class="project-category">Analytics</span>
-                            <h4 class="project-title">Predictive Analytics Dashboard</h4>
-                            <p class="project-description">Real-time data analytics with ML-powered predictions for business intelligence and forecasting.</p>
-                            <div class="project-tags">
-                                <span class="project-tag">Machine Learning</span>
-                                <span class="project-tag">BI</span>
-                                <span class="project-tag">Data</span>
-                            </div>
-                            <div class="project-meta">
-                                <span class="project-date"><i class="far fa-calendar"></i> Sep 2024</span>
-                                <span class="project-date"><i class="far fa-clock"></i> 5 months</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 5 -->
-                <div class="col-lg-4 col-md-6 project-item" data-category="ai-agent">
-                    <div class="project-card">
-                        <div class="project-image">
-                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Cdefs%3E%3ClinearGradient id='p5' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23f59e0b'/%3E%3Cstop offset='100%25' style='stop-color:%23ef4444'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23p5)' width='400' height='300'/%3E%3Ccircle cx='200' cy='150' r='80' fill='white' opacity='0.2'/%3E%3Ccircle cx='200' cy='150' r='50' fill='white' opacity='0.3'/%3E%3Ccircle cx='200' cy='150' r='25' fill='white' opacity='0.5'/%3E%3Cpath d='M200 100 L200 80 M200 200 L200 220 M250 150 L270 150 M150 150 L130 150' stroke='white' stroke-width='5' stroke-linecap='round'/%3E%3Ccircle cx='200' cy='150' r='15' fill='white'/%3E%3C/svg%3E" alt="Project">
-                            <div class="project-overlay">
-                                <button class="project-overlay-btn" onclick="openProjectModal('project5')">View Details</button>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <span class="project-category">AI Agent</span>
-                            <h4 class="project-title">Smart Document Processor</h4>
-                            <p class="project-description">AI agent for automated document analysis, data extraction, and intelligent classification.</p>
-                            <div class="project-tags">
-                                <span class="project-tag">OCR</span>
-                                <span class="project-tag">NLP</span>
-                                <span class="project-tag">Vision AI</span>
-                            </div>
-                            <div class="project-meta">
-                                <span class="project-date"><i class="far fa-calendar"></i> Aug 2024</span>
-                                <span class="project-date"><i class="far fa-clock"></i> 3 months</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 6 -->
-                <div class="col-lg-4 col-md-6 project-item" data-category="automation">
-                    <div class="project-card">
-                        <div class="project-image">
-                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Cdefs%3E%3ClinearGradient id='p6' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%236366f1'/%3E%3Cstop offset='100%25' style='stop-color:%2314b8a6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23p6)' width='400' height='300'/%3E%3Crect x='80' y='80' width='60' height='60' rx='10' fill='white' opacity='0.3'/%3E%3Crect x='170' y='80' width='60' height='60' rx='10' fill='white' opacity='0.5'/%3E%3Crect x='260' y='80' width='60' height='60' rx='10' fill='white' opacity='0.3'/%3E%3Cpath d='M140 110 L170 110 M230 110 L260 110' stroke='white' stroke-width='4'/%3E%3Crect x='125' y='160' width='150' height='60' rx='10' fill='white' opacity='0.4'/%3E%3Cpath d='M200 140 L200 160' stroke='white' stroke-width='4'/%3E%3C/svg%3E" alt="Project">
-                            <div class="project-overlay">
-                                <button class="project-overlay-btn" onclick="openProjectModal('project6')">View Details</button>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <span class="project-category">Automation</span>
-                            <h4 class="project-title">Supply Chain Optimizer</h4>
-                            <p class="project-description">End-to-end supply chain automation with inventory management and demand forecasting.</p>
-                            <div class="project-tags">
-                                <span class="project-tag">IoT</span>
-                                <span class="project-tag">Automation</span>
-                                <span class="project-tag">ML</span>
-                            </div>
-                            <div class="project-meta">
-                                <span class="project-date"><i class="far fa-calendar"></i> Jul 2024</span>
-                                <span class="project-date"><i class="far fa-clock"></i> 6 months</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Project Modal -->
-    <div class="project-modal" id="projectModal">
-        <div class="project-modal-content">
-            <button class="project-modal-close" onclick="closeProjectModal()">×</button>
-            <div id="modalContent"></div>
-        </div>
-    </div>
-
     <!-- Contact Section -->
     <section class="contact" id="contact">
         <div class="container">
@@ -1244,4 +1347,223 @@
                             </div>
                             <div class="mb-3">
                                 <select class="form-control" required>
-                                    <option value="">Select
+                                    <option value="">Select Service</option>
+                                    <option value="ai-agent">AI Agent Development</option>
+                                    <option value="automation">Process Automation</option>
+                                    <option value="ml">Machine Learning</option>
+                                    <option value="chatbot">Chatbot Solutions</option>
+                                    <option value="analytics">Data Analytics</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="bg-white p-5 rounded-3 shadow-sm h-100">
+                        <h4 class="mb-4">Contact Information</h4>
+                        <div class="mb-4">
+                            <i class="fas fa-map-marker-alt text-primary me-3"></i>
+                            <span>123 AI Street, Tech City, TC 12345</span>
+                        </div>
+                        <div class="mb-4">
+                            <i class="fas fa-phone text-primary me-3"></i>
+                            <span>+1 (555) 123-4567</span>
+                        </div>
+                        <div class="mb-4">
+                            <i class="fas fa-envelope text-primary me-3"></i>
+                            <span>info@aiautomationpro.com</span>
+                        </div>
+                        <div class="mb-4">
+                            <i class="fas fa-clock text-primary me-3"></i>
+                            <span>Mon - Fri: 9:00 AM - 6:00 PM</span>
+                        </div>
+                        <div class="social-icons mt-4">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5 class="mb-3">AI Automation Pro</h5>
+                    <p class="text-muted">Transforming businesses with cutting-edge AI agents and intelligent automation solutions.</p>
+                    <div class="social-icons mt-3">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h5 class="mb-3">Quick Links</h5>
+                    <div class="footer-links">
+                        <a href="#home">Home</a>
+                        <a href="#services">Services</a>
+                        <a href="#demos">Demos</a>
+                        <a href="#reviews">Reviews</a>
+                        <a href="#features">Features</a>
+                        <a href="#contact">Contact</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 mb-4">
+                    <h5 class="mb-3">Services</h5>
+                    <div class="footer-links">
+                        <a href="#">AI Agent Development</a>
+                        <a href="#">Process Automation</a>
+                        <a href="#">Machine Learning</a>
+                        <a href="#">Chatbot Solutions</a>
+                        <a href="#">Data Analytics</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 mb-4">
+                    <h5 class="mb-3">Newsletter</h5>
+                    <p class="text-muted">Subscribe to get updates on AI and automation trends.</p>
+                    <form class="mt-3">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Your email">
+                            <button class="btn btn-primary" type="submit">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <hr class="my-4" style="border-color: rgba(255,255,255,0.1);">
+            <div class="text-center">
+                <p class="mb-0 text-muted">&copy; 2024 AI Automation Pro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chatbot Button -->
+    <button class="chatbot-button" onclick="alert('Chat feature coming soon!')">
+        <i class="fas fa-comments"></i>
+    </button>
+
+    <!-- Scroll to Top Button -->
+    <div class="scroll-top" id="scrollTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            const scrollTop = document.getElementById('scrollTop');
+            
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+                scrollTop.classList.add('active');
+            } else {
+                navbar.classList.remove('scrolled');
+                scrollTop.classList.remove('active');
+            }
+        });
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu after click
+                    const navbarCollapse = document.getElementById('navbarNav');
+                    if (navbarCollapse.classList.contains('show')) {
+                        const bsCollapse = new bootstrap.Collapse(navbarCollapse);
+                        bsCollapse.hide();
+                    }
+                }
+            });
+        });
+
+        // Play video function
+        function playVideo(videoId) {
+            const video = document.getElementById(videoId);
+            const overlay = video.nextElementSibling;
+            
+            if (video.paused) {
+                video.play();
+                overlay.style.display = 'none';
+            } else {
+                video.pause();
+                overlay.style.display = 'flex';
+            }
+        }
+
+        // Pause video when clicked
+        document.querySelectorAll('video').forEach(video => {
+            video.addEventListener('click', function() {
+                if (!this.paused) {
+                    this.pause();
+                    this.nextElementSibling.style.display = 'flex';
+                }
+            });
+        });
+
+        // Auto-pause videos when scrolling away
+        const videoObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const video = entry.target;
+                if (!entry.isIntersecting && !video.paused) {
+                    video.pause();
+                    video.nextElementSibling.style.display = 'flex';
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('video').forEach(video => {
+            videoObserver.observe(video);
+        });
+
+        // Contact form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+        });
+
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.service-card, .video-card, .feature-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
